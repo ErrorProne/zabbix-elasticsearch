@@ -50,6 +50,7 @@ config = kaptan.Kaptan()
 if "cluster" in sys.argv[1]:
   config.import_config(getattr(conn.cluster, api[1])())
   returnval = config.get(sys.argv[2])
+
 elif "nodes" in sys.argv[1]:
   nodestats = getattr(conn.nodes, api[1])()
   config.import_config(nodestats)
@@ -70,6 +71,7 @@ elif "nodes" in sys.argv[1]:
 
   # Get the value
   returnval = config.get(key_string)
+
 else:
   zbx_fail()
 
@@ -77,6 +79,14 @@ else:
 if returnval is None:
   zbx_fail()
 else:
+  # Map status green/yellow/red to integers
+  if returnval == 'green':
+    returnval = 0
+  elif returnval == 'yellow':
+    returnval = 1
+  elif returnval == 'red':
+    returnval = 2
+
   print returnval
 
 # End
