@@ -103,7 +103,7 @@ $ ./zbx_es.py nodes.status nodes.my-node-1.indicies.docs.count
 ```
 Internally the script will look up the node-id of the node called "my-node-1" and replace "my-node-1" with "ZmTYPyuXEATDIE7m9GThDrBA" before searching for the value. 
 
-## Zabbix intergration
+## Zabbix integration
 To use the script for sending metrics to Zabbix it's recommended to deploy it on a Elasticsearch (cluster) node and then let the Zabbix Agent call it using a UserParameter.
 
 The script and templates are tested on Zabbix 2.4.
