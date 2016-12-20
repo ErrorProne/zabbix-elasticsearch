@@ -61,13 +61,12 @@ elif "nodes" in sys.argv[1]:
     node_name = nodestats['nodes'][node_id]['name']
     node_names[node_name] = node_id
 
-  # Split the key in parts and replace the node_name
-  # with node_id if possible
+  # Replace the node name with node ID if possible
   key_string = sys.argv[2]
-  key_parts = key_string.split(".")
-  for key in key_parts:
-    if key in node_names:
-      key_string = key_string.replace(key, node_names[key])
+  for node in sorted(node_names, key=len, reverse=True):
+    if node in key_string:
+      key_string = key_string.replace(node, node_names[node])
+      break
 
   # Get the value
   returnval = config.get(key_string)
