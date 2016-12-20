@@ -90,7 +90,7 @@ Take this output for example:
 ```
 Let's say you want the value of the docs count. To get to this value you'd have to use:
 ```sh
-$ ./zbx_es.py nodes.status nodes.ZmTYPyuXEATDIE7m9GThDrBA.indicies.docs.count
+$ ./zbx_es.py nodes.stats nodes.ZmTYPyuXEATDIE7m9GThDrBA.indicies.docs.count
 1660154
 ```
 Which works, but you probably remember you named your node "my-node-1" and have never seen the node id "ZmTYPyuXEATDIE7m9GThDrBA" before.
@@ -98,7 +98,7 @@ Which works, but you probably remember you named your node "my-node-1" and have 
 Some logic in the script is capable of replacing the node-name with the node-id at runtime. So you can actually retrieve the data like this:
 
 ```sh
-$ ./zbx_es.py nodes.status nodes.my-node-1.indicies.docs.count
+$ ./zbx_es.py nodes.stats nodes.my-node-1.indicies.docs.count
 1660154
 ```
 Internally the script will look up the node-id of the node called "my-node-1" and replace "my-node-1" with "ZmTYPyuXEATDIE7m9GThDrBA" before searching for the value. 
